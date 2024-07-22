@@ -31,8 +31,9 @@ THING = "thing"
 MONEY = "money"
 BALABCE = "balance"
 TODAY = datetime.date.today()
-payments = []
 
+__all__ = ["date","thing","money","balance"]
+payments = []
 scriptFolder = os.path.dirname(os.path.realpath(__file__))
 os.chdir(scriptFolder)
 
