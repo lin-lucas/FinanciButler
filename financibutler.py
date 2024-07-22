@@ -16,7 +16,7 @@ from tkinter import simpledialog as SD
 from tkinter import filedialog as FD
 
 from sys import exit
-from os import chdir
+import os
 
 import datetime
 
@@ -33,7 +33,8 @@ BALABCE = "balance"
 TODAY = datetime.date.today()
 payments = []
 
-chdir(r"C:\Program Files (x86)\Financial Butler")
+scriptFolder = os.path.dirname(os.path.realpath(__file__))
+os.chdir(scriptFolder)
 
 
 class Payment:
