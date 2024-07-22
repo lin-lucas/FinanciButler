@@ -17,6 +17,7 @@ from tkinter import filedialog as FD
 
 import sys
 import os
+import appdirs
 
 import datetime
 
@@ -35,12 +36,20 @@ TODAY = datetime.date.today()
 __all__ = ["date","thing","money","balance"]
 payments = []
 
-if getattr(sys, 'frozen', False):
-    base_dir = sys._MEIPASS
-else:
-    base_dir = os.path.dirname(__file__)
-reprPath = os.path.join(base_dir, "repr.dat")
+base_dir = os.path.dirname(__file__)
 zhPath = os.path.join(base_dir, "zh_cn.lang")
+# 获取应用程序的名称和作者
+appname = "Financibutler"
+appauthor = "Lin Lucas"
+
+# 获取用户数据目录
+user_data_dir = appdirs.user_data_dir(appname, appauthor)
+
+# 确保用户数据目录存在
+os.makedirs(user_data_dir, exist_ok=True)
+
+# 修改 repr.dat 文件路径
+reprPath = os.path.join(base_dir, "repr.dat")
 
 class Payment:
     def __init__(self, date, thing, money, balance):
