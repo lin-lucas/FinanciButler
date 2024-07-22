@@ -15,7 +15,7 @@ from tkinter import messagebox as MB
 from tkinter import simpledialog as SD
 from tkinter import filedialog as FD
 
-from sys import exit
+import sys
 import os
 
 import datetime
@@ -34,9 +34,13 @@ TODAY = datetime.date.today()
 
 __all__ = ["date","thing","money","balance"]
 payments = []
-scriptFolder = os.path.dirname(os.path.realpath(__file__))
-os.chdir(scriptFolder)
 
+if getattr(sys, 'frozen', False):
+    base_dir = sys._MEIPASS
+else:
+    base_dir = os.path.dirname(__file__)
+reprPath = os.path.join(base_dir, "repr.dat")
+zhPath = os.path.join(base_dir, "zh_cn.lang")
 
 class Payment:
     def __init__(self, date, thing, money, balance):
@@ -52,7 +56,7 @@ class Payment:
 
 def read_from_file():
     global payments
-    with open("repr.dat", encoding="utf-8") as fileObj:
+    with open(reprPath, encoding="utf-8") as fileObj:
         for line in fileObj:
             thing, money, _date, balance = line.split("/")
 
@@ -69,7 +73,7 @@ def read_from_file():
 
 
 def write_to_file():
-    with open("repr.dat", encoding="utf-8", mode="w") as fileObj:
+    with open(reprPath, encoding="utf-8", mode="w") as fileObj:
         for i in payments:
             writeStr = (
                 i.thing
@@ -105,7 +109,7 @@ langDis = []
 
 def read_lang_file(lang):
     global langDis
-    with open(f"lang\\{lang}.lang", encoding="utf-8") as langFile:
+    with open(zhPath, encoding="utf-8") as langFile:
         for line in langFile:
             langDis.append(line.rstrip("\n"))
     display_payments()
@@ -287,7 +291,7 @@ saveBtn = Button(
 )
 saveBtn.pack(side=LEFT)
 
-exitBtn = Button(root, width=10, height=2, bd=5, bg="red", command=exit)
+exitBtn = Button(root, width=10, height=2, bd=5, bg="red", command=sys.exit)
 # exitBtn.grid(row=0, column=1)
 exitBtn.pack(side=RIGHT)
 
