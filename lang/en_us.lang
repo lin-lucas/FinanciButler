@@ -1,0 +1,19 @@
+Please enter the date (example: 2000-01-01, enter "today" is the current date)
+Bad input! Please re-input. Retry?
+Please enter expenses or income (ex. -123, 134.58)
+Input format is wrong, please re-input!
+Please enter the details (example: Buy vegetables)
+Please enter the serial number
+        {} bills     Total income: ${}      Total expenses: ${}    Balance: ${}
+                    No.          Date         In / Out ($)      Balance($)      Details
+    -----------------------------------------------------------------------------------------------
+Bill File
+No.,Date,Details,I&O,Balance
++$
+-$
+No bill, please enter the current balance (example: 1000, -288.96)
+Financial butler
+Add
+Delete
+Export
+EXIT
