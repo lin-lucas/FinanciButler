@@ -272,46 +272,48 @@ def init_balance():
         last_balance = payments[-1].balance
 
 
-# Main Code
+def main():
+    global root,textCanvas
+    root = Tk()
+    root.title("财务管家")
 
-root = Tk()
-root.title("财务管家")
-
-menuBar = Menu(root)
-langChooseMenu = Menu(menuBar, tearoff=False)
-menuBar.add_cascade(label="语言/languege", menu=langChooseMenu)
-langChooseMenu.add_command(
+    menuBar = Menu(root)
+    langChooseMenu = Menu(menuBar, tearoff=False)
+    menuBar.add_cascade(label="语言/languege", menu=langChooseMenu)
+    langChooseMenu.add_command(
     label="简体中文", command=lambda x="zh_cn": read_lang_file(x)
 )
-langChooseMenu.add_command(label="English", command=lambda x="en_us": read_lang_file(x))
+    langChooseMenu.add_command(label="English", command=lambda x="en_us": read_lang_file(x))
 
-textCanvas = Canvas(root, width=500, height=500)
-textCanvas.pack()
+    textCanvas = Canvas(root, width=500, height=500)
+    textCanvas.pack()
 
-addBtn = Button(root, width=10, height=2, bd=5, bg="green", command=add_payment)
-# addBtn.grid(column=0,row=0)
-addBtn.pack(side=LEFT)
+    addBtn = Button(root, width=10, height=2, bd=5, bg="green", command=add_payment)
+    # addBtn.grid(column=0,row=0)
+    addBtn.pack(side=LEFT)
 
-subBtn = Button(root, width=10, height=2, bd=5, bg="yellow", command=sub_payment)
-subBtn.pack(side=LEFT)
+    subBtn = Button(root, width=10, height=2, bd=5, bg="yellow", command=sub_payment)
+    subBtn.pack(side=LEFT)
 
-saveBtn = Button(
+    saveBtn = Button(
     root, width=10, height=2, bd=5, bg="blue", foreground="white", command=save_to_file
 )
-saveBtn.pack(side=LEFT)
+    saveBtn.pack(side=LEFT)
 
-exitBtn = Button(root, width=10, height=2, bd=5, bg="red", command=sys.exit)
-# exitBtn.grid(row=0, column=1)
-exitBtn.pack(side=RIGHT)
+    exitBtn = Button(root, width=10, height=2, bd=5, bg="red", command=sys.exit)
+    # exitBtn.grid(row=0, column=1)
+    exitBtn.pack(side=RIGHT)
 
-read_from_file()
-init_balance()
-read_lang_file("zh_cn")
+    read_from_file()
+    init_balance()
+    read_lang_file("zh_cn")
 
-DIS_STR = {False: langDis[12], True: langDis[11]}
+    DIS_STR = {False: langDis[12], True: langDis[11]}
 
-# Mainloop
+    # Mainloop
 
-#root.config(menu=menuBar)
-root.bind("<Alt-F4>", root.destroy)
-root.mainloop()
+    #root.config(menu=menuBar)
+    root.bind("<Alt-F4>", root.destroy)
+    root.mainloop()
+if __name__ == "__main__":
+    main()
