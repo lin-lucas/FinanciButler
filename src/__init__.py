@@ -8,7 +8,7 @@ You can easily manage your bills.
 Click the button to operate. 
 Supports the export of the files."""
 
-__version__ = "0.1.3"
+__version__ = "0.1.4a"
 
 from tkinter import *
 from tkinter import messagebox as MB
@@ -273,7 +273,7 @@ def init_balance():
 
 
 def main():
-    global root,textCanvas
+    global root,textCanvas,addBtn,subBtn,saveBtn,exitBtn
     root = Tk()
     root.title("财务管家")
 
