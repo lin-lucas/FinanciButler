@@ -253,7 +253,7 @@ def save_to_file():
         defaultextension=".csv", filetypes=[(langDis[9], ".csv")]
     )
     writeStr = f"{langDis[10]}\n"
-    with open(saveFileName, "w") as fileObj:
+    with open(saveFileName, encoding="utf-8",mode="w") as fileObj:
         for j, i in enumerate(payments):
             writeStr += f"{j+1},{i.date},{i.thing},{i.money},{i.balance}\n"
         fileObj.write(writeStr + "\n")
